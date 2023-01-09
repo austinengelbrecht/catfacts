@@ -1,7 +1,8 @@
 module CatFacts exposing (..)
 
 import Browser
-import Html
+import Html exposing (Html, button, div, text)
+import Html.Events exposing (onClick)
 
 
 -- MAIN
