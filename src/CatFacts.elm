@@ -27,17 +27,20 @@ init =
 
 
 --TYPES
+factUrl : String
+factUrl =
+  "https://catfact.ninja/fact"
 
 
 -- UPDATE
 type Msg
-  = None
+  = GetNewFact
 
 
 update : Msg -> Model -> ( Model )
 update msg model =
   case msg of
-    None ->
+    GetNewFact ->
       { model | fact = "nothing" }
 
 
