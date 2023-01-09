@@ -21,12 +21,21 @@ type alias Model =
   { fact : String }
 
 
-init : Model 
-init = 
-  { fact = "No Facts Yet"}
+initialModel : Model 
+initialModel = 
+  { fact = ""
+  , status = Loading
+  }
 
 
 --TYPES
+
+type Status 
+  = Loading 
+  | Loaded 
+  | Errored String 
+
+
 factUrl : String
 factUrl =
   "https://catfact.ninja/fact"
@@ -49,4 +58,19 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
+  div [] <| 
+    case model.status of 
+      Loading -> 
+        []
+      
+      Loaded ->
+        []
+
+      Errored errorMessage ->
+        [ text ("Error: " ++ errorMessage) ]
+
+
+
+viewFact : Model -> Html Msg
+viewFact model = 
   div [] [ text model.fact]
