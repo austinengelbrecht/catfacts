@@ -1,12 +1,13 @@
-module CatFacts exposing (..)
+module CatFacts exposing (main)
 
 import Browser
-import Html exposing (Html, button, div, text)
-import Html.Events exposing (onClick)
+import Html exposing (..)
+-- import Html.Events exposing (onClick)
 
 
 -- MAIN
 
+main : Program () Model Msg 
 main = 
   Browser.sandbox 
     { init = init
@@ -16,29 +17,28 @@ main =
 
 
 -- MODEL
-type alias Model = Int
+type alias Model = 
+  { fact : String }
 
 
 init : Model 
 init = 
-  0 
+  { fact = "No Facts Yet"}
+
+
+--TYPES
 
 
 -- UPDATE
-
 type Msg
-  = Increment
-  | Decrement
+  = None
 
 
-update : Msg -> Model -> Model
+update : Msg -> Model -> ( Model )
 update msg model =
   case msg of
-    Increment ->
-      model + 1
-
-    Decrement ->
-      model - 1
+    None ->
+      { model | fact = "nothing" }
 
 
 -- VIEW
@@ -46,8 +46,4 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-  div []
-    [ button [ onClick Decrement ] [ text "-" ]
-    , div [] [ text (String.fromInt model) ]
-    , button [ onClick Increment ] [ text "+" ]
-    ]
+  div [] [ text model.fact]
