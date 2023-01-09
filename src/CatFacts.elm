@@ -9,16 +9,18 @@ import Html exposing (..)
 
 main : Program () Model Msg 
 main = 
-  Browser.sandbox 
-    { init = init
+  Browser.element 
+    { init = \flags -> (initialModel, initialCmd)
     , update = update 
     , view = view 
+    , subscriptions = \_ -> Sub.none 
     }
 
 
 -- MODEL
 type alias Model = 
-  { fact : String }
+  { fact : String
+  , status : Status }
 
 
 initialModel : Model 
@@ -26,6 +28,10 @@ initialModel =
   { fact = ""
   , status = Loading
   }
+
+initialCmd : Cmd Msg
+initialCmd =
+  Cmd.none
 
 
 --TYPES
@@ -46,11 +52,11 @@ type Msg
   = GetNewFact
 
 
-update : Msg -> Model -> ( Model )
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
     GetNewFact ->
-      { model | fact = "nothing" }
+      ( { model | fact = "nothing" }, Cmd.none )
 
 
 -- VIEW
