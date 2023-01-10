@@ -72,10 +72,10 @@ initialCmd =
 --   | Errored String 
 
 
--- type alias Fact =
---   { fact : String 
---   , length: Int 
---   }
+type alias Fact =
+  { fact : String 
+  , length: Int 
+  }
 
 
 factUrl : String
@@ -85,11 +85,26 @@ factUrl =
 
 -- HTTP
 
+getNewFact : Cmd Msg
+getNewFact = 
+  Http.get
+    { url = factUrl
+    , expect = Http.expectJson GotFact factDecoder 
+    }
+
+
+factDecoder : Decoder Fact
+factDecoder =
+  succeed Fact 
+    |> required "fact" string 
+    |> required "length" int 
+
 
 
 -- UPDATE
 type Msg
   = GetNewFact
+  | GotFact (Result Http.Error (Fact)) 
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -97,6 +112,12 @@ update msg model =
   case msg of
     GetNewFact ->
       ( { model | fact = "nothing" }, Cmd.none )
+
+    GotFact (Ok newFact) ->
+      ( { model | fact = "newFact" }, Cmd.none )
+
+    GotFact (Err _) ->
+      ( { model | fact = "Issue getting fact"}, Cmd.none )
 
 
 
