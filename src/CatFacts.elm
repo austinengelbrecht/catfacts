@@ -2,7 +2,7 @@ module CatFacts exposing (main)
 
 import Browser
 import Html exposing (..)
--- import Html.Events exposing (onClick)
+import Html.Events exposing (onClick)
 import Http 
 import Json.Decode exposing (Decoder, bool, int, string, succeed)
 import Json.Decode.Pipeline exposing (optional, required)
@@ -11,23 +11,36 @@ import Json.Decode.Pipeline exposing (optional, required)
 
 -- MAIN
 
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
+
 main : Program () Model Msg 
 main = 
   Browser.element 
     { init = \flags -> (initialModel, initialCmd)
     , update = update 
     , view = view 
-    , subscriptions = \_ -> Sub.none 
+    , subscriptions = subscriptions
     }
 
 
--- SUBSCRIPTIONS
-
-
 -- MODEL
+type alias Model =
+  { fact : String }
+
 -- type alias Model = 
 --   { fact : String
 --   , status : Status }
+
+initialModel : Model 
+initialModel =
+  { fact = "" }
+
+
+initialCmd : Cmd Msg 
+initialCmd = 
+  Cmd.none 
 
 
 -- initialModel : Model 
@@ -65,51 +78,36 @@ main =
 --   }
 
 
--- factUrl : String
--- factUrl =
---   "https://catfact.ninja/fact"
+factUrl : String
+factUrl =
+  "https://catfact.ninja/fact"
 
 
 -- HTTP
 
 
+
 -- UPDATE
--- type Msg
---   = GetNewFact
---   | GotFact 
+type Msg
+  = GetNewFact
 
 
--- update : Msg -> Model -> ( Model, Cmd Msg )
--- update msg model =
---   case msg of
---     GetNewFact ->
---       ( { model | fact = "nothing" }, Cmd.none )
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+  case msg of
+    GetNewFact ->
+      ( { model | fact = "nothing" }, Cmd.none )
 
---     GotFact (Ok Fact) ->
---       ( { model | fact = "Got a Fact!"}, Cmd.none )
-
---     GotFact (Err _) -> 
---       ( { model | status = Errored "Server Error!"}, Cmd.none )
 
 
 -- VIEW
 
 
--- view : Model -> Html Msg
--- view model =
---   div [] <| 
---     case model.status of 
---       Loading -> 
---         []
-      
---       Loaded ->
---         ( {})
-
---       Errored errorMessage ->
---         [ text ("Error: " ++ errorMessage) ]
-
-
-
--- viewFact : Model -> Html Msg
--- viewFact model = 
---   div [] [ text model.fact]
+view : Model -> Html Msg
+view model =
+  div []
+    [ h1 [] [ text "Cat Facts?"]
+    , p [] [ text model.fact ]
+    , button [ onClick GetNewFact ] [ text "Get a Fact"]
+    ]
+  
