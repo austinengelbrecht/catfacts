@@ -27,7 +27,8 @@ main =
 
 -- MODEL
 type alias Model =
-  { fact : String }
+  { fact : String 
+  , status : Status}
 
 -- type alias Model = 
 --   { fact : String
@@ -35,7 +36,9 @@ type alias Model =
 
 initialModel : Model 
 initialModel =
-  { fact = "" }
+  { fact = ""
+  , status = Loading 
+  }
 
 
 initialCmd : Cmd Msg 
@@ -66,10 +69,10 @@ initialCmd =
 
 --TYPES
 
--- type Status 
---   = Loading 
---   | Loaded 
---   | Errored String 
+type Status 
+  = Loading
+  | Success Fact 
+  | Errored String 
 
 
 type alias Fact =
@@ -111,10 +114,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
     GetNewFact ->
-      ( { model | fact = "nothing" }, Cmd.none )
+      ( { model |  status = Loading }, getNewFact )
 
     GotFact (Ok newFact) ->
-      ( { model | fact = "newFact" }, Cmd.none )
+      ( { model | status = Success newFact }, Cmd.none )
 
     GotFact (Err _) ->
       ( { model | fact = "Issue getting fact"}, Cmd.none )
@@ -127,7 +130,21 @@ update msg model =
 view : Model -> Html Msg
 view model =
   div []
-    [ p [] [ text model.fact ]
+    [ div [] <|
+      case model.status of 
+        Loading ->
+          []
+        
+        Success newFact ->
+          [ viewFact newFact ]
+
+        Errored errorMessage ->
+          [] 
+    
     , button [ onClick GetNewFact ] [ text "Get a Fact"]
     ]
-  
+
+
+viewFact : Fact -> Html Msg 
+viewFact newFact =
+    p [] [ text newFact.fact] 
