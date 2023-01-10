@@ -106,8 +106,7 @@ update msg model =
 view : Model -> Html Msg
 view model =
   div []
-    [ h1 [] [ text "Cat Facts?"]
-    , p [] [ text model.fact ]
+    [ p [] [ text model.fact ]
     , button [ onClick GetNewFact ] [ text "Get a Fact"]
     ]
   
