@@ -11,7 +11,9 @@
 
     <script src="app.js"></script>
     <script>
-      let app = Elm.CatFacts.init({ node: document.getElementById("app") });
+      document.addEventListener("DOMContentLoaded", function() {
+        let app = Elm.CatFacts.init({ node: document.getElementById("app") });
+      })
     </script>
   </body>
 </html>
