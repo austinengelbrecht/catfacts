@@ -9,11 +9,10 @@ import Json.Decode.Pipeline exposing (optional, required)
 
 
 
-
 -- MAIN
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.none
 
 
