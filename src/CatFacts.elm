@@ -9,11 +9,13 @@ import Json.Decode.Pipeline exposing (optional, required)
 
 
 
+
 -- MAIN
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
+
 
 main : Program () Model Msg 
 main = 
@@ -26,13 +28,11 @@ main =
 
 
 -- MODEL
+
 type alias Model =
   { fact : String 
   , status : Status}
 
--- type alias Model = 
---   { fact : String
---   , status : Status }
 
 initialModel : Model 
 initialModel =
@@ -44,27 +44,6 @@ initialModel =
 initialCmd : Cmd Msg 
 initialCmd = 
   Cmd.none 
-
-
--- initialModel : Model 
--- initialModel = 
---   { fact = ""
---   , status = Loading
---   }
-
--- initialCmd : Cmd Msg
--- initialCmd =
---   Http.get 
---     { url = factUrl 
---     , expect = Http.expectJson factDecoder
---     }
-
--- factDecoder : Decoder Fact 
--- factDecoder = 
---   succeed Fact 
---     |> required "fact" string 
---     |> required "length" int 
-
 
 
 --TYPES
@@ -103,7 +82,6 @@ factDecoder =
     |> required "length" int 
 
 
-
 -- UPDATE
 type Msg
   = GetNewFact
@@ -123,9 +101,7 @@ update msg model =
       ( { model | fact = "Issue getting fact"}, Cmd.none )
 
 
-
 -- VIEW
-
 
 view : Model -> Html Msg
 view model =
