@@ -7,15 +7,12 @@
     <title>Cat Facts?</title>
 
     <link href="/styles/dist/catfacts.css" rel="stylesheet" />
+    <script src="app.js"></script>
+    <script src="load.js"></script>
   </head>
   <body>
     <div id="app" class="ext"></div>
 
-    <script src="app.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        let app = Elm.CatFacts.init({ node: document.getElementById("app") });
-      })
-    </script>
+    
   </body>
 </html>
