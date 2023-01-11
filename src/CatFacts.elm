@@ -2,6 +2,7 @@ module CatFacts exposing (main)
 
 import Browser
 import Html exposing (..)
+import Html.Attributes as Attr exposing (class, classList, id, name, src, title, type_)
 import Html.Events exposing (onClick)
 import Http 
 import Json.Decode exposing (Decoder, bool, int, string, succeed)
@@ -104,7 +105,7 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-  div []
+  div [ Attr.class "ext"]
     [ div [] <|
       case model.status of 
         Loading ->
