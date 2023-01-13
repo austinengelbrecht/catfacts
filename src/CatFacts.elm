@@ -51,7 +51,7 @@ initialCmd =
 type Status 
   = Loading
   | Success Fact 
-  | Errored String 
+  | Errored 
 
 
 type alias Fact =
@@ -98,7 +98,7 @@ update msg model =
       ( { model | status = Success newFact }, Cmd.none )
 
     GotFact (Err _) ->
-      ( { model | fact = "Issue getting fact"}, Cmd.none )
+      ( { model | status = Errored }, Cmd.none )
 
 
 -- VIEW
@@ -114,8 +114,8 @@ view model =
         Success newFact ->
           [ viewFact newFact ]
 
-        Errored errorMessage ->
-          [] 
+        Errored  ->
+          [ viewError ] 
     
     , button [ onClick GetNewFact ] [ text "Get a Fact"]
     ]
@@ -123,4 +123,9 @@ view model =
 
 viewFact : Fact -> Html Msg 
 viewFact newFact =
-    p [] [ text newFact.fact] 
+  p [] [ text newFact.fact] 
+
+
+viewError : Html Msg
+viewError  =
+  p [] [ text "Sorry, I'm not really sure what happened, but I couldn't get a fact."]
