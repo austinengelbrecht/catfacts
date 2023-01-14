@@ -1,5 +1,6 @@
-$red: #eb5e55;
-$off-black: #181818;
+$red: #e5383b;
+$button: #0b090a;
+$button-hover: #161a1d;
 
 @import url("https://fonts.googleapis.com/css2?family=Iceland&family=Source+Sans+Pro&display=swap");
 
@@ -15,11 +16,17 @@ $off-black: #181818;
 
 .getfact-button {
   border: none;
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem;
 
   color: #eb5e55;
-  background-color: $off-black;
+  background-color: $button;
 
   font-family: "Iceland", cursive;
   font-size: 1.5rem;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $button-hover;
+  }
 }
