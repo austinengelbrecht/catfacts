@@ -1,8 +1,11 @@
+$red: #eb5e55;
+$off-black: #181818;
+
 .ext {
   width: 250px;
   font-size: 16px;
   padding: 16px;
-  background-color: #eb5e55;
+  background-color: $red;
   display: flex;
   flex-flow: column nowrap;
 }
@@ -12,5 +15,5 @@
   padding: 1rem 2rem;
 
   color: #eb5e55;
-  background-color: #181818;
+  background-color: $off-black;
 }
