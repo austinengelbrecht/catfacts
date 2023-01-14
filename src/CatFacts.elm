@@ -43,7 +43,7 @@ initialModel =
 
 initialCmd : Cmd Msg 
 initialCmd = 
-  Cmd.none 
+  getNewFact 
 
 
 --TYPES
@@ -109,7 +109,7 @@ view model =
     [ div [] <|
       case model.status of 
         Loading ->
-          []
+          [ viewLoading ]
         
         Success newFact ->
           [ viewFact newFact ]
@@ -129,3 +129,8 @@ viewFact newFact =
 viewError : Html Msg
 viewError  =
   p [] [ text "Sorry, I'm not really sure what happened, but I couldn't get a fact."]
+
+
+viewLoading : Html Msg
+viewLoading =
+  p [] [ text "Getting you a new fact..." ]
