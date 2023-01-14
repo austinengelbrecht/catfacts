@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Iceland&family=Source+Sans+Pro&display=swap");
 .ext {
   width: 250px;
-  font-size: 16px;
+  font-size: 1.25rem;
+  font-family: "Source Sans Pro", sans-serif;
   padding: 16px;
   background-color: #eb5e55;
   display: flex;
@@ -12,4 +14,6 @@
   padding: 1rem 2rem;
   color: #eb5e55;
   background-color: #181818;
+  font-family: "Iceland", cursive;
+  font-size: 1.5rem;
 }
