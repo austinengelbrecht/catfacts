@@ -2,7 +2,7 @@
   "manifest_version": 3,
 
   "name": "Cat Facts",
-  "description": "This is a test extension using elm",
+  "description": "Get random cat facts instantly in your broswer.",
   "version": "0.1",
 
   "action": {
