@@ -3,7 +3,7 @@
 
   "name": "Cat Facts",
   "description": "Get random cat facts instantly in your broswer.",
-  "version": "0.1",
+  "version": "0.2",
 
   "action": {
     "default_popup": "popup.html"
