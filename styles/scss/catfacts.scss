@@ -1,5 +1,32 @@
+$red: #e5383b;
+$button: #0b090a;
+$button-hover: #161a1d;
+
+@import url("https://fonts.googleapis.com/css2?family=Iceland&family=Source+Sans+Pro&display=swap");
+
 .ext {
-  width: 250px; 
-  font-size: 12px;
-  padding: 16px; 
+  width: 250px;
+  font-size: 1.25rem;
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 16px;
+  background-color: $red;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.getfact-button {
+  border: none;
+  padding: 0.75rem 2rem;
+
+  color: #eb5e55;
+  background-color: $button;
+
+  font-family: "Iceland", cursive;
+  font-size: 1.5rem;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $button-hover;
+  }
 }

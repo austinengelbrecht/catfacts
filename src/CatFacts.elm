@@ -117,7 +117,10 @@ view model =
         Errored  ->
           [ viewError ] 
     
-    , button [ onClick GetNewFact ] [ text "Get a Fact"]
+    , button [ onClick GetNewFact 
+             , class "getfact-button"
+             ] 
+                [ text "Get a Fact"]
     ]
 
 
@@ -133,4 +136,4 @@ viewError  =
 
 viewLoading : Html Msg
 viewLoading =
-  p [] [ text "Getting you a new fact..." ]
+  p [] [ text "Getting a new fact..." ]

@@ -2,10 +2,16 @@
   "manifest_version": 3,
 
   "name": "Cat Facts",
-  "description": "This is a test extension using elm",
-  "version": "0.1",
+  "description": "Get random cat facts instantly in your broswer.",
+  "version": "0.2",
 
   "action": {
-    "default_popup":"index.html"
+    "default_popup": "popup.html"
+  },
+
+  "icons": {
+    "16": "assets/icons/catfact_16.png",
+    "48": "assets/icons/catfact_48.png",
+    "128": "assets/icons/catfact_128.png"
   }
 }
