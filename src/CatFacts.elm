@@ -136,4 +136,4 @@ viewError  =
 
 viewLoading : Html Msg
 viewLoading =
-  p [] [ text "Getting you a new fact..." ]
+  p [] [ text "Getting a new fact..." ]
