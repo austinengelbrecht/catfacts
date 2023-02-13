@@ -2,7 +2,11 @@ $red: #e5383b;
 $button: #0b090a;
 $button-hover: #161a1d;
 
-@import url("https://fonts.googleapis.com/css2?family=Iceland&family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+
+body {
+  margin: 0;
+}
 
 .ext {
   width: 250px;
@@ -14,19 +18,51 @@ $button-hover: #161a1d;
   flex-flow: column nowrap;
 }
 
-.getfact-button {
+.getfact {
   border: none;
-  padding: 0.75rem 2rem;
-
-  color: #eb5e55;
-  background-color: $button;
-
-  font-family: "Iceland", cursive;
-  font-size: 1.5rem;
-
+  background-color: transparent;
+  padding: 1rem 2rem;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.25rem;
+  position: relative;
   cursor: pointer;
+  text-transform: uppercase;
 
   &:hover {
-    background-color: $button-hover;
+    background-color: $button;
+    color: $red;
+    transition: 2s;
+  }
+
+  &:before {
+    content: "";
+    height: 59px;
+    width: 247px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 2px solid $button;
+    border-right: 2px solid $button;
+    transition: 1s;
+  }
+
+  &:after {
+    content: "";
+    height: 55px;
+    width: 251px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: 2px solid $button;
+    border-bottom: 2px solid $button;
+    transition: 1s;
+  }
+
+  &:hover:before {
+    transform: rotateX(180deg);
+  }
+
+  &:hover:after {
+    transform: rotateY(180deg);
   }
 }

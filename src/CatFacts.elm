@@ -118,9 +118,9 @@ view model =
           [ viewError ] 
     
     , button [ onClick GetNewFact 
-             , class "getfact-button"
+             , class "getfact"
              ] 
-                [ text "Get a Fact"]
+                [ text "Get Fact"]
     ]
 
 
@@ -131,7 +131,7 @@ viewFact newFact =
 
 viewError : Html Msg
 viewError  =
-  p [] [ text "Sorry, I'm not really sure what happened, but I couldn't get a fact."]
+  p [] [ text "Sorry, I'm not really sure what happened, but I was not able to get a fact."]
 
 
 viewLoading : Html Msg
