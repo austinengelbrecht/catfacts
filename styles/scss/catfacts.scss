@@ -16,13 +16,15 @@ $button-hover: #161a1d;
 
 .getfact-button {
   border: none;
-  padding: 0.75rem 2rem;
+  padding: 1rem 2rem;
 
   color: #eb5e55;
   background-color: $button;
 
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.5rem;
+
+  text-transform: capitalize;
 
   cursor: pointer;
 
