@@ -118,9 +118,9 @@ view model =
           [ viewError ] 
     
     , button [ onClick GetNewFact 
-             , class "getfact-button"
+             , class "getfact"
              ] 
-                [ text "Get a Fact"]
+                [ text "Get Fact"]
     ]
 
 
